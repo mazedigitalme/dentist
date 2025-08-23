@@ -1,190 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dentist Portfolio – Dr. Sarah Benali</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cabinet Dentaire — Modèles Maze Digital</title>
+  <meta name="description" content="Modèles de site pour cabinets dentaires — Maze Digital" />
   <style>
     :root{
-      --brand:#06b6d4; --brand2:#3b82f6; --bg:#f8fafc; --text:#1e293b; --muted:#64748b;
+      --radius: 18px;
+      --shadow: 0 18px 50px -20px rgba(0,0,0,.25);
+      --maxw: 1120px;
+      --space: 18px;
+      --text: #0b0b0c;
+      --muted: #6b7280;
+      --bg: #ffffff;
+      --card: #ffffff;
+      --line: #e5e7eb;
+      --brand: #0ea5e9; /* classic sky */
+      --accent: #0284c7;
     }
-    body{margin:0;font-family:Inter, sans-serif;color:var(--text);background:var(--bg);line-height:1.6;}
-    header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);position:sticky;top:0;z-index:50;}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
-    .nav{display:flex;justify-content:space-between;align-items:center;height:70px;}
-    .logo{font-weight:700;font-size:1.2rem;color:var(--brand)}
-    nav a{margin:0 12px;color:var(--text);font-weight:500;text-decoration:none}
-    nav a:hover{color:var(--brand)}
-    .btn{padding:10px 18px;border-radius:6px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-weight:600;text-decoration:none;}
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:80px 20px;}
-    .hero h1{font-size:2.4rem;margin:0 0 20px}
-    .hero p{color:var(--muted)}
-    .hero img{max-width:100%;border-radius:12px;}
-    /* Sections */
-    section{padding:80px 20px;}
-    h2{text-align:center;margin-bottom:40px;font-size:1.8rem}
-    .grid{display:grid;gap:20px}
-    .two{grid-template-columns:1fr 1fr}
-    .four{grid-template-columns:repeat(4,1fr)}
-    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-    .sub{color:var(--muted);font-size:.9rem;margin-bottom:8px}
-    .team img,.testimonial img{border-radius:50%;}
-    footer{background:#0f172a;color:#cbd5e1;padding:40px 20px;text-align:center}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}.two,.four{grid-template-columns:1fr}}
+    /* THEME: MODERN */
+    .theme-modern{
+      --text:#0b0f0e;--muted:#5b6166;--bg:#ffffff;--card:#ffffff;--line:#e7f5ee;--brand:#10b981;--accent:#059669;
+    }
+    /* THEME: PRESTIGE */
+    .theme-prestige{
+      --text:#e6e6e6;--muted:#9ca3af;--bg:#000000;--card:#0b0b0b;--line:#1f1f1f;--brand:#f59e0b;--accent:#d97706;
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg);}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:0 16px}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#fff;padding:12px 18px;border-radius:var(--radius);font-weight:600;box-shadow:var(--shadow);border:0;cursor:pointer}
+    .btn.light{background:#fff;color:var(--brand);border:1px solid var(--line);box-shadow:none}
+    .btn.dark{background:var(--brand);}
+    .pill{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--muted)}
+    header.nav{position:sticky;top:0;background:color-mix(in oklab, var(--bg) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:20}
+    header.nav .inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    .menu a{margin-left:18px;color:var(--muted)}
+    .hero{display:grid;gap:28px;grid-template-columns:1fr;align-items:center;padding:36px 0}
+    @media(min-width:900px){.hero{grid-template-columns:1.1fr .9fr}}
+    h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0}
+    h2{font-size:clamp(22px,3vw,30px);margin:0 0 14px}
+    p{line-height:1.6}
+    .badges{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;color:var(--muted)}
+    .stack{display:grid;gap:18px}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:1fr}
+    @media(min-width:820px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+    .testi .star{color:#f59e0b}
+    .section{padding:36px 0}
+    footer{margin-top:36px;border-top:1px solid var(--line)}
+    .foot{display:grid;gap:24px;grid-template-columns:1fr}
+    @media(min-width:820px){.foot{grid-template-columns:repeat(3,1fr)}}
+
+    /* Prestige specific tweaks */
+    .theme-prestige .card{background:#0b0b0b;border-color:#1f1f1f}
+    .theme-prestige .menu a{color:#d1d5db}
+    .theme-prestige .pill{border-color:#1f1f1f;color:#a3a3a3}
+
+    /* Template Switcher (preview-only) */
+    .switcher{position:fixed;right:14px;bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px;display:flex;gap:6px;z-index:50}
+    .switcher button{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#111;cursor:pointer}
+    .theme-prestige .switcher{background:#0b0b0b}
+    .theme-prestige .switcher button{background:#111;color:#e6e6e6;border-color:#1f1f1f}
+
+    /* Simple icon bullets */
+    .bullets{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted)}
+    .bullets span{display:inline-flex;align-items:center;gap:8px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block}
+
+    /* CTA bar mobile */
+    .cta-bar{position:sticky;bottom:0;left:0;right:0;background:color-mix(in oklab, var(--bg) 96%, transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px;display:flex;justify-content:center}
   </style>
 </head>
-<body>
-  <header>
-    <div class="wrap nav">
-      <div class="logo">🦷 Dentia</div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#team">Team</a>
-        <a href="#faq">FAQ</a>
+<body class="theme-classic">
+
+  <!-- PREVIEW SWITCHER (remove in production) -->
+  <div class="switcher" aria-label="Changer de modèle">
+    <button data-theme="classic">Classic</button>
+    <button data-theme="modern">Modern</button>
+    <button data-theme="prestige">Prestige</button>
+  </div>
+
+  <header class="nav">
+    <div class="inner container">
+      <div class="logo" data-slot="clinicName" style="font-weight:700">Cabinet Dentaire Horizon</div>
+      <nav class="menu">
+        <a href="#services">Soins</a>
+        <a href="#about">À propos</a>
         <a href="#contact">Contact</a>
+        <a class="btn" id="waTop" target="_blank" rel="noopener">
+          <span>WhatsApp – Prendre RDV</span>
+        </a>
       </nav>
-      <a href="#contact" class="btn">Book Appointment</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero wrap">
-    <div>
-      <h1>Transforming Smiles with Precision and Gentle Touch</h1>
-      <p>We provide high-quality dental care tailored for every family. From routine checkups to advanced treatments, our compassionate team ensures your smile stays healthy and beautiful.</p>
-      <a href="#contact" class="btn">Book Appointment</a>
-    </div>
-    <div>
-      <img src="image1.jpg" alt="Dentist main photo">
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="wrap">
-    <h2>Our Services</h2>
-    <div class="grid four">
-      <div class="card">
-        <h3>General Dentistry</h3>
-        <p>Comprehensive care with cleanings, exams, and more.</p>
-      </div>
-      <div class="card">
-        <h3>Cosmetic Dentistry</h3>
-        <p>Enhance your smile with whitening, veneers, and more.</p>
-      </div>
-      <div class="card">
-        <h3>Pediatric Dentistry</h3>
-        <p>Gentle dental care for children to grow healthy smiles.</p>
-      </div>
-      <div class="card">
-        <h3>Restorative Dentistry</h3>
-        <p>Repair and restore your smile for lasting comfort.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="wrap">
-    <h2>About Us</h2>
-    <div class="grid two">
-      <div>
-        <img src="image2.jpg" alt="Clinic photo">
+  <main>
+    <!-- HERO -->
+    <section class="hero container section">
+      <div class="stack">
+        <span class="pill" data-slot="city">Casablanca, Maroc</span>
+        <h1><span data-slot="doctorName">Dr. Amina El Fassi</span> — <span style="color:var(--brand)" data-slot="tagline">Votre sourire, notre priorité.</span></h1>
+        <p data-slot="about">Nous offrons des soins dentaires modernes et doux : implants, esthétique, orthodontie et soins conservateurs. Une équipe à l’écoute, des équipements de dernière génération, et une approche centrée sur le patient.</p>
+        <div class="bullets">
+          <span><i class="dot"></i> Stérilisation conforme</span>
+          <span><i class="dot"></i> <span data-slot="hours0">Lun–Ven : 09:00 – 19:00</span></span>
+        </div>
+        <div class="stack" style="flex-direction:row;gap:12px;flex-wrap:wrap">
+          <a class="btn" id="waHero" target="_blank" rel="noopener">WhatsApp – Prendre RDV</a>
+          <a href="#services" class="btn light">Découvrir nos soins</a>
+        </div>
       </div>
       <div>
-        <h3>Professional Dental Excellence</h3>
-        <p>We offer high-quality dental care led by experienced professionals. Using state-of-the-art technology, we provide treatments tailored to every patient’s needs.</p>
-        <ul>
-          <li>✔ Personalized Treatment Plans</li>
-          <li>✔ Advanced Technology</li>
-          <li>✔ Flexible Scheduling</li>
-        </ul>
+        <img id="heroImage" alt="Cabinet dentaire" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1400&auto=format&fit=crop" style="border-radius:24px;box-shadow:var(--shadow)"/>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Team -->
-  <section id="team" class="wrap">
-    <h2>Meet Our Dental Team</h2>
-    <div class="grid four">
-      <div class="card team">
-        <img src="image3.jpg" alt="Doctor 1" width="100">
-        <h4>Dr. Sarah Benali</h4>
-        <p class="sub">Lead Dentist</p>
-      </div>
-      <div class="card team">
-        <img src="image4.jpg" alt="Doctor 2" width="100">
-        <h4>Dr. Maya Lin</h4>
-        <p class="sub">Cosmetic Specialist</p>
-      </div>
-      <div class="card team">
-        <img src="image5.jpg" alt="Doctor 3" width="100">
-        <h4>Dr. Michael Reyes</h4>
-        <p class="sub">Pediatric Specialist</p>
-      </div>
-      <div class="card team">
-        <img src="image6.jpg" alt="Doctor 4" width="100">
-        <h4>Dr. James Carter</h4>
-        <p class="sub">Dental Hygienist</p>
-      </div>
-    </div>
-  </section>
+    <!-- SERVICES -->
+    <section id="services" class="container section">
+      <h2>Nos soins</h2>
+      <div class="grid cols-3" id="servicesGrid"></div>
+    </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="wrap">
-    <h2>Frequently Asked Questions</h2>
-    <div class="grid two">
-      <div class="card">
-        <h4>How often should I visit the dentist?</h4>
-        <p>We recommend at least twice a year for optimal oral health.</p>
+    <!-- ABOUT + TESTIMONIALS -->
+    <section id="about" class="container section">
+      <div class="grid" style="grid-template-columns:1fr;gap:22px">
+        <div class="card">
+          <h2>À propos</h2>
+          <p data-slot="about2">Notre équipe prend le temps d’expliquer chaque étape pour une expérience sereine, du diagnostic jusqu’au suivi. Nous privilégions des techniques conservatrices et un résultat naturel.</p>
+        </div>
+        <div class="grid cols-3" id="testiGrid"></div>
       </div>
-      <div class="card">
-        <h4>What should I do in a dental emergency?</h4>
-        <p>Contact us immediately and we’ll provide urgent care.</p>
-      </div>
-      <div class="card">
-        <h4>Do you offer services for kids?</h4>
-        <p>Yes, our pediatric dentistry is tailored for children.</p>
-      </div>
-      <div class="card">
-        <h4>What are my options for missing teeth?</h4>
-        <p>We offer implants, bridges, and dentures to restore your smile.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimonials -->
-  <section id="testimonials" class="wrap">
-    <h2>Our Happy Customers</h2>
-    <div class="grid two">
-      <div class="card testimonial">
-        <p>“The care I received was excellent. I now smile with confidence again!”</p>
-        <p><strong>- Bryan G.</strong></p>
+    <!-- CONTACT -->
+    <section id="contact" class="container section">
+      <h2>Nous contacter</h2>
+      <div class="grid" style="grid-template-columns:1fr;gap:18px">
+        <div class="card">
+          <p><strong>Adresse :</strong> <span data-slot="address">123, Boulevard Al Massira, Casablanca</span></p>
+          <p><strong>Téléphone :</strong> <span data-slot="phoneDisplay">+212 6 00 00 00 00</span></p>
+          <div class="stack" style="flex-direction:row;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <a class="btn" id="waContact" target="_blank" rel="noopener">WhatsApp – Prendre RDV</a>
+            <a class="btn light" href="#map">Voir sur Google Maps</a>
+          </div>
+        </div>
+        <div id="map" class="card" style="overflow:hidden;border-radius:var(--radius);padding:0">
+          <iframe title="Google Map" width="100%" height="320" style="border:0" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-7.617!3d33.589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!"></iframe>
+        </div>
       </div>
-      <div class="card testimonial">
-        <p>“Professional and kind staff who made me feel at ease.”</p>
-        <p><strong>- Michael S.</strong></p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Contact -->
-  <section id="contact" class="wrap">
-    <h2>Contact Us</h2>
-    <div class="card">
-      <p><strong>Clinic Location:</strong> 50 Main St, Casablanca, Morocco</p>
-      <p><strong>Call:</strong> +212 600 111 222</p>
-      <p><strong>Email:</strong> contact@dentia.ma</p>
-    </div>
-  </section>
+  <div class="cta-bar">
+    <a class="btn" id="waSticky" target="_blank" rel="noopener">WhatsApp – Prendre RDV</a>
+  </div>
 
   <footer>
-    © <span id="year"></span> Dentia · All rights reserved
+    <div class="container section foot">
+      <div>
+        <h3 data-slot="clinicName2">Cabinet Dentaire Horizon</h3>
+        <p class="muted" data-slot="address2">123, Boulevard Al Massira, Casablanca</p>
+        <p class="muted" data-slot="city2">Casablanca, Maroc</p>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <ul id="hoursList" style="list-style:none;padding:0;margin:8px 0 0"></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p class="muted">Téléphone : <span data-slot="phoneDisplay2">+212 6 00 00 00 00</span></p>
+        <a class="btn" id="waFooter" target="_blank" rel="noopener">WhatsApp – Prendre RDV</a>
+      </div>
+    </div>
+    <div class="container" style="padding:0 16px 28px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)">© <span id="year"></span> <span data-slot="clinicName3">Cabinet Dentaire Horizon</span>. Tous droits réservés. Site par Maze Digital.</div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
+    // ====== CONFIGURATIONS ======
+    const data = {
+      theme: "classic", // classic | modern | prestige
+      clinicName: "Cabinet Dentaire Horizon",
+      doctorName: "Dr. Amina El Fassi",
+      tagline: "Votre sourire, notre priorité.",
+      city: "Casablanca, Maroc",
+      address: "123, Boulevard Al Massira, Casablanca",
+      phoneIntl: "212600000000", // pour wa.me (sans +)
+      phoneDisplay: "+212 6 00 00 00 00",
+      whatsappMsg: "Bonjour, je souhaite prendre un rendez-vous.",
+      heroImage: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1400&auto=format&fit=crop",
+      about: "Nous offrons des soins dentaires modernes et doux : implants, esthétique, orthodontie et soins conservateurs. Une équipe à l’écoute, des équipements de dernière génération, et une approche centrée sur le patient.",
+      services: [
+        { title: "Consultation & Bilan", desc: "Examen complet, radios et plan de traitement personnalisé." },
+        { title: "Implants dentaires", desc: "Solutions fiables pour remplacer une ou plusieurs dents." },
+        { title: "Blanchiment", desc: "Éclaircissement professionnel pour un sourire éclatant." },
+        { title: "Orthodontie", desc: "Aligneurs transparents & appareils fixes pour adultes/enfants." },
+        { title: "Esthétique dentaire", desc: "Facettes, composites, remodelage du sourire." },
+        { title: "Urgences", desc: "Prise en charge rapide de la douleur et des traumatismes." },
+      ],
+      testimonials: [
+        { name: "Yassine B.", text: "Service impeccable, équipe très rassurante. Le blanchiment a dépassé mes attentes." },
+        { name: "Khadija R.", text: "Le Dr. Amina explique tout clairement. Cabinet propre et moderne, je recommande !" },
+        { name: "Imane T.", text: "Prise de rendez-vous facile sur WhatsApp et aucun retard. Top !" },
+      ],
+      hours: [
+        { day: "Lun–Ven", time: "09:00 – 19:00" },
+        { day: "Samedi", time: "09:00 – 13:00" },
+        { day: "Dimanche", time: "Fermé" },
+      ],
+    };
+
+    // ====== RENDER ======
+    function applyTheme(theme){
+      document.body.classList.remove("theme-classic","theme-modern","theme-prestige");
+      if(theme === "modern") document.body.classList.add("theme-modern");
+      else if(theme === "prestige") document.body.classList.add("theme-prestige");
+      else document.body.classList.add("theme-classic");
+    }
+
+    function waLink(){
+      return `https://wa.me/${data.phoneIntl}?text=${encodeURIComponent(data.whatsappMsg)}`;
+    }
+
+    function q(sel){ return document.querySelector(sel); }
+
+    function fillSlots(){
+      q('[data-slot="clinicName"]').textContent = data.clinicName;
+      q('[data-slot="clinicName2"]').textContent = data.clinicName;
+      q('[data-slot="clinicName3"]').textContent = data.clinicName;
+
+      q('[data-slot="doctorName"]').textContent = data.doctorName;
+      q('[data-slot="tagline"]').textContent = data.tagline;
+      q('[data-slot="city"]').textContent = data.city;
+      q('[data-slot="city2"]').textContent = data.city;
+
+      q('[data-slot="address"]').textContent = data.address;
+      q('[data-slot="address2"]').textContent = data.address;
+
+      q('[data-slot="phoneDisplay"]').textContent = data.phoneDisplay;
+      q('[data-slot="phoneDisplay2"]').textContent = data.phoneDisplay;
+
+      q('[data-slot="about"]').textContent = data.about;
+      q('[data-slot="about2"]').textContent = "Notre équipe prend le temps d’expliquer chaque étape pour une expérience sereine, du diagnostic jusqu’au suivi. Nous privilégions des techniques conservatrices et un résultat naturel.";
+
+      q('#heroImage').src = data.heroImage;
+
+      // Hours
+      q('[data-slot="hours0"]').textContent = `${data.hours[0].day} : ${data.hours[0].time}`;
+      const ul = q('#hoursList');
+      ul.innerHTML = '';
+      data.hours.forEach(h=>{
+        const li = document.createElement('li');
+        li.textContent = `${h.day}: ${h.time}`;
+        ul.appendChild(li);
+      });
+
+      // Services
+      const grid = q('#servicesGrid');
+      grid.innerHTML = '';
+      data.services.forEach(s=>{
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<h3 style="margin:0 0 6px">${s.title}</h3><p style="margin:0;color:var(--muted)">${s.desc}</p>`;
+        grid.appendChild(card);
+      });
+
+      // Testimonials
+      const tgrid = q('#testiGrid');
+      tgrid.innerHTML = '';
+      data.testimonials.forEach(t=>{
+        const card = document.createElement('div');
+        card.className = 'card testi';
+        card.innerHTML = `<div style="color:#f59e0b">★★★★★</div><p style="margin:8px 0">“${t.text}”</p><div style="color:var(--muted)">— ${t.name}</div>`;
+        tgrid.appendChild(card);
+      });
+
+      // WhatsApp links
+      ['#waTop','#waHero','#waContact','#waSticky','#waFooter'].forEach(id=>{
+        const a = q(id); if(a) a.href = waLink();
+      });
+
+      // Footer year
+      q('#year').textContent = new Date().getFullYear();
+    }
+
+    // ====== INIT ======
+    applyTheme(data.theme);
+    fillSlots();
+
+    // Theme switcher (preview only)
+    document.querySelectorAll('.switcher button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const t = btn.getAttribute('data-theme');
+        data.theme = t; applyTheme(t);
+      })
+    });
   </script>
 </body>
 </html>
